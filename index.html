@@ -7,22 +7,72 @@
 </head>
 <body>
     <script>
+        
+        let computerScore = 0;
+        let humanScore = 0;
+//Get computer choice
         function getComputerChoice() {
             let number = Math.random() * 100;
-            let computerChoice = '';
+            let cpuChoice = '';
             
             if (number <= 33) {
-                computerChoice = 'rock';
+                cpuChoice = 'rock';
             }
             else if (number <= 66) {
-                computerChoice = 'paper';
+                cpuChoice = 'paper';
             }
             else {
-                computerChoice = 'scissors';
+                cpuChoice = 'scissors';
             }
-            return computerChoice;
+            return cpuChoice;
         }
-        console.log(getComputerChoice());
+//Get human choice       
+        function getHumanChoice() {
+            let rpsPrompt = prompt("Please enter rock, paper, or scissors.");
+            let humanChoice = '';
+            switch (rpsPrompt.toLowerCase()) {
+                case 'rock':
+                    humanChoice = 'rock';
+                    break;
+                case 'paper':
+                    humanChoice = 'paper';
+                    break;
+                case 'scissors':
+                    humanChoice = 'scissors';
+                    break;
+                default:
+                    console.log('you messed up');
+            }
+            return humanChoice;
+        }
+ //Decide who wins       
+        function playRound(computerChoice, playerChoice) {
+            if (computerChoice == playerChoice) {
+                return console.log("It's a tie!");
+            }
+            else if (computerChoice == 'rock' && playerChoice == 'paper') {
+                return console.log("Paper beats rock, you win!");
+            }
+            else if (computerChoice == 'rock' && playerChoice == 'scissors') {
+                return console.log("Rock beats scissors, you lose!");
+            }
+            else if (computerChoice == 'scissors' && playersChoice == 'paper') {
+                return console.log("Scissors beats paper, you lose!");
+            }
+            else if (computerChoice == 'scissors' && playersChoice == 'rock') {
+                return console.log("Rock beats scissors, you win!");
+            }   
+            else if (computerChoice == 'paper' && playersChoice == 'rock') {
+                return console.log("Paper beats rock, you lose!");
+            }
+            else {
+                return console.log("Scissors beats paper, you win!");
+            }  
+        }
+        getHuman = getHumanChoice();
+        getCpu = getComputerChoice();
+        playRound(getCpu, getHuman);
+        
     </script>
 </body>
 </html>
