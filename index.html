@@ -4,97 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rockpaperscissors</title>
+    <script src='janken.js' defer></script>
 </head>
 <body>
-    <script>
-        
-        let computerScore = 0;
-        let humanScore = 0;
-        
-//Get computer choice
-        function getComputerChoice() {
-            let number = Math.random() * 100;
-            let cpuChoice = '';
-            
-            if (number <= 33) {
-                cpuChoice = 'rock';
-            }
-            else if (number <= 66) {
-                cpuChoice = 'paper';
-            }
-            else {
-                cpuChoice = 'scissors';
-            }
-            return cpuChoice;
-        }
-//Get human choice       
-        function getHumanChoice() {
-            let rpsPrompt = prompt("Please enter rock, paper, or scissors.");
-            let humanChoice = '';
-            switch (rpsPrompt.toLowerCase()) {
-                case 'rock':
-                    humanChoice = 'rock';
-                    break;
-                case 'paper':
-                    humanChoice = 'paper';
-                    break;
-                case 'scissors':
-                    humanChoice = 'scissors';
-                    break;
-                default:
-                    console.log('you messed up');
-            }
-            return humanChoice;
-        }
- //Decide who wins       
-        function playRound(computerChoice, playerChoice) {
-            if (computerChoice == playerChoice) {
-                console.log("It's a tie!");
-            }
-            else if (computerChoice == 'rock' && playerChoice == 'paper') {
-                humanScore += 1;
-                console.log("Paper beats rock, you win!");
-            }
-            else if (computerChoice == 'rock' && playerChoice == 'scissors') {
-                computerScore += 1;
-                console.log("Rock beats scissors, you lose!");
-            }
-            else if (computerChoice == 'scissors' && playerChoice == 'paper') {
-                computerScore += 1;
-                console.log("Scissors beats paper, you lose!");
-            }
-            else if (computerChoice == 'scissors' && playerChoice == 'rock') {
-                humanScore += 1;
-                console.log("Rock beats scissors, you win!");
-            }   
-            else if (computerChoice == 'paper' && playerChoice == 'rock') {
-                computerScore += 1;
-                console.log("Paper beats rock, you lose!");
-            }
-            else {
-                humanScore += 1;
-                console.log("Scissors beats paper, you win!");
-            }  
-            console.log("The score is Computer: " + computerScore + " You: " + humanScore);
-        }
-        
-        function playGame() {
-            let getHuman = getHumanChoice();
-            let getCpu = getComputerChoice();
-            playRound(getCpu, getHuman);
-            if (computerScore == 3) {
-                return console.log("The computer wins!");
-            }
-            else if (humanScore == 3) {
-                return console.log("You win!");
-            }
-            else {
-            playGame();
-            }
-        }
-        playGame();
-       
-        
+    <h1>Let's Play Janken!</h1>
+    
+    <button id="rockBtn">Rock</button>
+    <button id="scissorsBtn">Scissors</button>
+    <button id="paperBtn">Paper</button>
+    
+    
+    <div class="score">Placeholder</div>
+    <div class="results"></div>
+    <script>     
     </script>
 </body>
 </html>
