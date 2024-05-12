@@ -11,6 +11,7 @@ const scissorsBeatsPaperWin = "Scissors beats paper, you win!";
 const btnRock = document.querySelector('#rockBtn');
 const btnScissors = document.querySelector('#scissorsBtn');
 const btnPaper = document.querySelector('#paperBtn');
+const btnReset = document.querySelector('#resetBtn');
 const keepScore = document.querySelector('.score');
 const results = document.querySelector('.results');
 
@@ -26,6 +27,11 @@ btnScissors.addEventListener("click", () => {
 btnPaper.addEventListener("click", () => {
     playRound(getComputerChoice(), 'paper');
 });
+
+btnReset.addEventListener("click", () => {
+    resetGame();
+    writeScore();
+})
 //initialize scores
 let computerScore = 0;
 let humanScore = 0;
@@ -47,32 +53,32 @@ function getComputerChoice() {
 }
 function playRound(computerChoice, humanChoice) {
     if (computerChoice == humanChoice) {
-        console.log("It's a tie!");
+        results.textContent = "It's a tie!";
     }
 
     else if (computerChoice == 'rock' && humanChoice == 'paper') {
         humanScore += 1;
-        console.log("Paper beats rock, you win!");      
+        results.textContent = "Paper beats rock, you win!";      
     }
     else if (computerChoice == 'rock' && humanChoice == 'scissors') {
         computerScore += 1;
-        console.log("Rock beats scissors, you lose!");
+        results.textContent = "Rock beats scissors, you lose!";
     }
     else if (computerChoice == 'scissors' && humanChoice == 'paper') {
         computerScore += 1;
-        console.log("Scissors beats paper, you lose!");
+        results.textContent = "Scissors beats paper, you lose!";
     }
     else if (computerChoice == 'scissors' && humanChoice == 'rock') {
         humanScore += 1;
-        console.log("Rock beats scissors, you win!");
+        results.textContent = "Rock beats scissors, you win!";
     }   
     else if (computerChoice == 'paper' && humanChoice == 'rock') {
         computerScore += 1;
-        console.log("Paper beats rock, you lose!");
+        results.textContent = "Paper beats rock, you lose!";
     }
     else {
         humanScore += 1;
-        console.log("Scissors beats paper, you win!");
+        results.textContent = "Scissors beats paper, you win!";
     }  
     writeScore();
     checkIfOver();
